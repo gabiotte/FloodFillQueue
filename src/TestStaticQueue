@@ -1,0 +1,48 @@
+public class Main {
+    public static void main(String[] args) {
+        // Criação de uma fila de tamanho 5
+        StaticQueue queue = new StaticQueue(5);
+
+        // Adicionando coordenadas na fila
+        System.out.println("Adicionando coordenadas na fila");
+        queue.add(new Coordenada(1, 2));
+        queue.add(new Coordenada(3, 4));
+        queue.add(new Coordenada(5, 6));
+        queue.add(new Coordenada(7, 8));
+        queue.add(new Coordenada(9, 10));
+
+        // Tentando adicionar mais um elemento (deve causar erro StackOverflowError)
+        try {
+            queue.add(new Coordenada(11, 12));
+        } catch (StackOverflowError e) {
+            System.out.println("Erro: " + e.getMessage());
+        }
+
+        // Removendo dois elementos da fila
+        System.out.println("\nRemovendo elementos da fila:");
+        System.out.println("Removido: " + queue.remove());
+        System.out.println("Removido: " + queue.remove());
+
+        // Verificando se a fila está cheia ou vazia
+        System.out.println("\nFila está cheia? " + queue.isFull());
+        System.out.println("Fila está vazia? " + queue.isEmpty());
+
+        // Limpando a fila
+        System.out.println("\nLimpando a fila...");
+        queue.clear();
+
+        // Verificando novamente se a fila está cheia ou vazia após limpar
+        System.out.println("Fila está cheia? " + queue.isFull());
+        System.out.println("Fila está vazia? " + queue.isEmpty());
+
+        // Adicionando coordenadas novamente após limpar
+        System.out.println("\nAdicionando coordenadas na fila após limpar");
+        queue.add(new Coordenada(13, 14));
+        queue.add(new Coordenada(15, 16));
+
+        // Removendo um elemento e verificando o estado da fila
+        System.out.println("Removido: " + queue.remove());
+        System.out.println("Fila está cheia? " + queue.isFull());
+        System.out.println("Fila está vazia? " + queue.isEmpty());
+    }
+}
